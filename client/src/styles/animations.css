@@ -1,0 +1,205 @@
+/* Animations.css - Минималистичные анимации для проекта */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle pulse animation */
+@keyframes subtlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-pulse-subtle {
+  animation: subtlePulse 2s ease infinite;
+}
+
+/* Shine effect animation */
+@keyframes shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shine {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 3s infinite linear;
+}
+
+/* Staggered animations for lists */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item:nth-child(1) { animation: fadeInUp 0.4s ease forwards 0.1s; }
+.stagger-item:nth-child(2) { animation: fadeInUp 0.4s ease forwards 0.2s; }
+.stagger-item:nth-child(3) { animation: fadeInUp 0.4s ease forwards 0.3s; }
+.stagger-item:nth-child(4) { animation: fadeInUp 0.4s ease forwards 0.4s; }
+.stagger-item:nth-child(5) { animation: fadeInUp 0.4s ease forwards 0.5s; }
+.stagger-item:nth-child(6) { animation: fadeInUp 0.4s ease forwards 0.6s; }
+.stagger-item:nth-child(7) { animation: fadeInUp 0.4s ease forwards 0.7s; }
+.stagger-item:nth-child(8) { animation: fadeInUp 0.4s ease forwards 0.8s; }
+
+/* Button hover animation */
+.btn-animate-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.btn-animate-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: all 0.3s;
+}
+
+.btn-animate-hover:hover::after {
+  left: 100%;
+}
+
+/* Border animation */
+@keyframes borderPulse {
+  0% { box-shadow: 0 0 0 0 hsla(var(--primary), 0.4); }
+  70% { box-shadow: 0 0 0 4px hsla(var(--primary), 0); }
+  100% { box-shadow: 0 0 0 0 hsla(var(--primary), 0); }
+}
+
+.animate-border-pulse {
+  animation: borderPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Typography animation */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 1.5s steps(40, end) forwards;
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Loading spinner animation */
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+.animate-spinner {
+  animation: rotate 2s linear infinite;
+}
+
+.animate-spinner circle {
+  stroke: hsla(var(--primary), 0.8);
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Icon animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounce 2s ease infinite;
+} 

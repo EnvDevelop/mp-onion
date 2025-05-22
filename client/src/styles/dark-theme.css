@@ -1,0 +1,365 @@
+/* Dark Theme Override Styles */
+:root {
+  color-scheme: dark;
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 191 91% 37%;
+  --primary-foreground: 144 100% 100%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+}
+
+html, body {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(8, 145, 178, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Modern scroll bars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
+
+/* Override for card and container backgrounds */
+.bg-white, .bg-gray-50, .bg-gray-100 {
+  background-color: hsl(var(--card)) !important;
+}
+
+.text-black, .text-gray-900, .text-gray-800 {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.7) !important;
+  outline-offset: 2px !important;
+}
+
+/* Form elements */
+input, select, textarea {
+  background-color: hsl(var(--secondary)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.25) !important;
+}
+
+/* Buttons */
+button, .btn {
+  transition: all 0.2s ease !important;
+}
+
+button:active, .btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* Primary button glow effect */
+.btn-primary, button[type="submit"] {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.btn-primary::after, button[type="submit"]::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -50% !important;
+  left: -50% !important;
+  width: 200% !important;
+  height: 200% !important;
+  background: radial-gradient(circle, hsla(var(--primary), 0.7) 0%, transparent 50%) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  pointer-events: none !important;
+}
+
+.btn-primary:hover::after, button[type="submit"]:hover::after {
+  opacity: 0.15 !important;
+}
+
+/* Borders */
+.border, .border-gray-200, .border-gray-300 {
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Tables */
+table {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+th, td {
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Nice table hover effect */
+tbody tr:hover {
+  background-color: hsl(var(--secondary) / 0.7) !important;
+}
+
+/* Shadows for dark mode */
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.shadow, .shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Cards with nice inner shadows */
+.card {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 
+              0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Modal and popup backgrounds with backdrop blur */
+.modal, .dialog, .popup, .sheet-content {
+  background-color: hsla(var(--popover) / 0.95) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Transitions */
+a, button, input, select, textarea, .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+/* Badge styles */
+.badge {
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu-content {
+  background-color: hsl(var(--popover)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Progress bars */
+progress, .progress {
+  background-color: hsl(var(--secondary)) !important;
+}
+
+progress::-webkit-progress-value, .progress-value {
+  background-color: hsl(var(--primary)) !important;
+}
+
+progress::-moz-progress-bar {
+  background-color: hsl(var(--primary)) !important;
+}
+
+/* Toast notifications */
+.toast {
+  background-color: hsl(var(--popover)) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+}
+
+.text-primary {
+  color: hsl(var(--primary)) !important;
+}
+
+.text-secondary {
+  color: hsl(var(--secondary-foreground)) !important;
+}
+
+.text-destructive {
+  color: hsl(var(--destructive)) !important;
+}
+
+.text-muted {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Link hover effects */
+a:hover {
+  color: hsl(var(--primary)) !important;
+}
+
+/* Image and avatar styling */
+img, .avatar {
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+img:hover, .avatar:hover {
+  filter: brightness(1.1) !important;
+}
+
+/* Inputs and form controls */
+.input, .select {
+  border-radius: 0.375rem !important;
+  border-width: 1px !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+.tabs {
+  border-color: hsl(var(--border)) !important;
+}
+
+.tab {
+  transition: all 0.2s ease !important;
+}
+
+/* Spinner animation styles */
+.animate-spinner {
+  animation: spinner-rotate 2s linear infinite !important;
+}
+
+.animate-spinner-circle {
+  stroke: hsl(var(--primary)) !important;
+  stroke-linecap: round !important;
+  animation: spinner-dash 1.5s ease-in-out infinite !important;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg) !important;
+  }
+}
+
+@keyframes spinner-dash {
+  0% {
+    stroke-dasharray: 1, 150 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  50% {
+    stroke-dasharray: 90, 150 !important;
+    stroke-dashoffset: -35 !important;
+  }
+  100% {
+    stroke-dasharray: 90, 150 !important;
+    stroke-dashoffset: -124 !important;
+  }
+}
+
+/* Skeleton loading animation */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--secondary)) 25%,
+    hsl(var(--secondary) / 0.5) 50%,
+    hsl(var(--secondary)) 75%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: skeleton-loading 1.5s infinite !important;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -100% 0 !important;
+  }
+  100% {
+    background-position: 100% 0 !important;
+  }
+}
+
+/* Hover underline animation */
+.hover-underline {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.hover-underline::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 100% !important;
+  transform: scaleX(0) !important;
+  height: 1px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  background-color: hsl(var(--primary)) !important;
+  transform-origin: bottom right !important;
+  transition: transform 0.3s ease-out !important;
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1) !important;
+  transform-origin: bottom left !important;
+}
+
+/* Override any inline styles */
+[style*="background-color: white"], 
+[style*="background-color: #fff"],
+[style*="background-color:#fff"],
+[style*="background: white"],
+[style*="background:#fff"],
+[style*="background: #fff"] {
+  background-color: hsl(var(--background)) !important;
+}
+
+[style*="color: black"], 
+[style*="color: #000"],
+[style*="color:#000"] {
+  color: hsl(var(--foreground)) !important;
+} 
